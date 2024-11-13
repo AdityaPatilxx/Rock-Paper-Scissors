@@ -2,6 +2,8 @@ const ROCK = 'rock'
 const PAPER = 'paper'
 const SCISSOR = 'scissor'
 
+let humanScore = 0
+let computerScore = 0
 
 function getComputerChoice(){
 
@@ -20,7 +22,6 @@ function getComputerChoice(){
 function getHumanChoice(){
     let validInput =  false;
     while(!validInput){
-        console.log('type 1 for rock, 2 for paper and 3 for scissor')
         let userInput = prompt('What\'s your choice:')
         if (userInput == 1){
             validInput = true
@@ -40,23 +41,48 @@ function getHumanChoice(){
     }
 }
 
-function playGame(HC,CC){
-    let humanScore = 0
-    let computerScore = 0
+function playRound(HC,CC){
     if ( (HC == ROCK && CC == SCISSOR) || (HC == PAPER && CC == ROCK) || (HC == SCISSOR && CC == PAPER) ) {
-        console.log('You Win!')
+        console.log('You win this round!')
         humanScore++
-        return humanScore
     }
     else if ( (HC == ROCK && CC == PAPER) || (HC == PAPER && CC == SCISSOR) || (HC == SCISSOR && CC == ROCK) ) {
-        console.log('You Lose!')
+        console.log('You Lose this round!')
         computerScore++
-        return computerScore
+    }
+    else if (HC == CC){
+        console.log('It\'s a Tied for this round')
     }
 }
 
-let computerChoice = getComputerChoice()
-let humanChoice = getHumanChoice()
+function playGame(){
+    let gameOn = true
+    let counter = 1
 
-playGame(humanChoice, computerChoice)
+    console.log('Welcome to game of ROCK-PAPER-SCISSOR')
+    console.log('type 1 for rock, 2 for paper and 3 for scissor')
+    while (gameOn){
+        let humanChoice = getHumanChoice()
+        let computerChoice = getComputerChoice()
+        console.log(`Round ${counter}`)
+        playRound(humanChoice, computerChoice)
+        counter++
+        if (counter > 5){
+            gameOn = false
+        }
+    }
+    console.log(`Your score: ${humanScore}`)
+    console.log(`Opponent score: ${computerScore}`)
+    if (humanScore == computerScore){
+        console.log('The game was a tie')
+    }
+    else if(humanScore > computerScore){
+        console.log('You have WON the game')
+    }
+    else{
+        console.log('You have LOST the game')
+    }
 
+}
+
+playGame()
