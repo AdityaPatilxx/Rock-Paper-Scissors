@@ -3,7 +3,7 @@ const PAPER = 'paper'
 const SCISSOR = 'scissor'
 
 
-function compChoice(){
+function getComputerChoice(){
 
     let randNum = Math.floor(Math.random() * 10) + 1
     if (randNum < 7 && randNum > 3){
@@ -17,7 +17,7 @@ function compChoice(){
     }
 }
 
-function humChoice(){
+function getHumanChoice(){
     let validInput =  false;
     while(!validInput){
         console.log('type 1 for rock, 2 for paper and 3 for scissor')
@@ -40,4 +40,23 @@ function humChoice(){
     }
 }
 
+function playGame(HC,CC){
+    let humanScore = 0
+    let computerScore = 0
+    if ( (HC == ROCK && CC == SCISSOR) || (HC == PAPER && CC == ROCK) || (HC == SCISSOR && CC == PAPER) ) {
+        console.log('You Win!')
+        humanScore++
+        return humanScore
+    }
+    else if ( (HC == ROCK && CC == PAPER) || (HC == PAPER && CC == SCISSOR) || (HC == SCISSOR && CC == ROCK) ) {
+        console.log('You Lose!')
+        computerScore++
+        return computerScore
+    }
+}
+
+let computerChoice = getComputerChoice()
+let humanChoice = getHumanChoice()
+
+playGame(humanChoice, computerChoice)
 
