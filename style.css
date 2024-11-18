@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
 
 @font-face {
@@ -6,51 +5,48 @@
     src: url('assets/fonts/TcblackcatRegular-pgZjd.ttf') format('truetype');
 }
 
-:root{
-    --primary-color: #1B1B2F ;
-    --secondary-color: #EAEAEA  ;
-    --accent-color: #E93322 ;
+:root {
+    --primary-color: #1B1B2F;
+    --secondary-color: #EAEAEA;
+    --accent-color: #E93322;
     --border-color: #262836;
-    --secondary-accent-color: #6E44FF ;
+    --secondary-accent-color: #F4C842;
 }
 
-html{
+html {
     font-size: 16px;
 }
 
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     font-family: "blackCat", sans-serif;
     background-color: var(--primary-color);
     color: var(--secondary-color);
 }
 
-h1,h2,h3,h4,h5,h6{
+h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 
-header{
+header {
     border-bottom: 2px solid;
 }
 
-footer{
+footer {
     border-top: 2px solid;
 }
 
-
-/* ---------------------------------------------------------------------------------------- */
-
-main *{
+main * {
     border-radius: 15px;
 }
 
 .header-container,
-.footer-container{
+.footer-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,16 +55,15 @@ main *{
     color: var(--secondary-color);
 }
 
-.header-container > h1{
+.header-container > h1 {
     font-size: 4rem;
 }
 
-footer p{
+footer p {
     font-size: 1.5rem;
 }
 
-
-.main-container{
+.main-container {
     height: 90vh;
     display: flex;
     max-width: 1000px;
@@ -76,7 +71,7 @@ footer p{
     justify-content: center;
 }
 
-.game-section{
+.game-section {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -87,18 +82,16 @@ footer p{
     border: 2px solid;
 }
 
-.sidebar{
+.sidebar {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     flex: 1;
     padding: 1rem;
     gap: 16px;
-
-    /* border: 5px dashed var(--accent-color); */
 }
 
-.sidebar > div{
+.sidebar > div {
     background-color: var(--border-color);
     flex: 1;
     display: flex;
@@ -107,24 +100,23 @@ footer p{
     outline: 2px solid;
 }
 
-.score-board{
+.score-board {
     max-height: 200px;
 }
 
-.sidebar h3,h2{
+.sidebar h3, h2 {
     font-size: 2.5rem;
     text-align: center;
 }
 
-img{
+img {
     width: 110px;
 }
 
-button{
+button {
     background-color: var(--secondary-color);
-
     font-family: "blackCat", sans-serif;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 2rem;
     flex: 0 1 auto;
     display: flex;
@@ -132,19 +124,23 @@ button{
     align-items: center;
     padding: 10px;
     box-shadow: 0px 10px 12px black;
-
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#choices{
+button:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+#choices {
     display: flex;
     justify-content: space-around;
     flex: 1;
     gap: 18px;
     margin-bottom: 18px;
-
 }
 
-.game-display{
+.game-display {
     flex: 3;
     background-color: var(--primary-color);
     margin: 16px;
@@ -155,53 +151,52 @@ button{
     align-items: center;
 }
 
-.game-display div{
+.game-display div {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap:20px
+    gap: 20px;
 }
 
-.game-display p{
+.game-display p {
     font-size: 4rem;
     color: var(--accent-color);
 }
-.game-display h1{
+
+.game-display h1 {
     font-size: 7rem;
     color: var(--accent-color);
 }
 
-
-
-.inner-box{
+.inner-box {
     background-color: var(--primary-color);
-    flex:2;
+    flex: 2;
     outline: 2px solid;
 }
 
-.inner-box h1{
+.inner-box h1 {
     font-size: 6rem;
     text-align: center;
     color: var(--accent-color);
 }
 
-
-
-.sidebar > .choice-history{
+.sidebar > .choice-history {
     flex: 2;
     max-height: 300px;
+    overflow-y: hidden;
 }
 
-.history{
-    overflow: hidden;
+.history {
     gap: 1rem;
     padding: 1rem;
     scroll-behavior: smooth;
 }
 
-.history p{
+.history p {
     font-size: 2rem;
     font-weight: 600;
     color: var(--accent-color);
 }
+
+
 
