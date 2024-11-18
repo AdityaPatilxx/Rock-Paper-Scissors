@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>R-P-S</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
-    
-    <script src="script.js"></script>
+    <header>
+        <div class="header-container">
+            <h1>Stone . Parchment . Cross-blades</h1>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="left sidebar">
+                <div class="score-board">
+                    <h2>Your Score</h2>
+                    <div class="inner-box">
+                        <h1 id="human-score">0</h1>
+                    </div>
+                </div>
+                <div class="human choice-history">
+                    <h3>History</h3>
+                    <div class="inner-box history">
+                    </div>
+                </div>
+            </div>
+            <div class="game-section">
+                <div class="game-display">
+                    <h1>Welcome</h1>
+                </div>
+                <div id="choices">
+                    <button class="rock">
+                        <img src="assets/images/rune_stone.png" alt="rock">
+                    </button>
+                    <button class="paper">
+                        <img src="assets/images/parchment.png" alt="paper">
+
+                    </button>
+                    <button class="scissor">
+                        <img src="assets/images/sword-new.png" alt="scissor">
+
+                    </button>
+                </div>
+            </div>
+            <div class="right sidebar">
+                <div class="score-board">
+                    <h2>Computer Score</h2>
+                    <div class="inner-box">
+                        <h1 id="computer-score">0</h1>
+                    </div>
+                </div>
+                <div class="computer choice-history">
+                    <h3>History</h3>
+                    <div class="inner-box history">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <p>Copyright &copy; 2024 Aditya.</p>
+        </div>
+    </footer>
 </body>
+
 </html>

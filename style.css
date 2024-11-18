@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+@font-face {
+    font-family: 'blackCat';
+    src: url('assets/fonts/TcblackcatRegular-pgZjd.ttf') format('truetype');
+}
+
+:root {
+    --primary-color: #1B1B2F;
+    --secondary-color: #EAEAEA;
+    --accent-color: #E93322;
+    --border-color: #262836;
+    --secondary-accent-color: #F4C842;
+}
+
+html {
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "blackCat", sans-serif;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+header {
+    border-bottom: 2px solid;
+}
+
+footer {
+    border-top: 2px solid;
+}
+
+main * {
+    border-radius: 15px;
+}
+
+.header-container,
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--border-color);
+    color: var(--secondary-color);
+}
+
+.header-container > h1 {
+    font-size: 4rem;
+}
+
+footer p {
+    font-size: 1.5rem;
+}
+
+.main-container {
+    height: 90vh;
+    display: flex;
+    max-width: 1000px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.game-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 2;
+    padding: 1rem;
+    background-color: var(--border-color);
+    box-shadow: 0px 12px 16px black;
+    border: 2px solid;
+}
+
+.sidebar {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem;
+    gap: 16px;
+}
+
+.sidebar > div {
+    background-color: var(--border-color);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 12px 16px black;
+    outline: 2px solid;
+}
+
+.score-board {
+    max-height: 200px;
+}
+
+.sidebar h3, h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+img {
+    width: 110px;
+}
+
+button {
+    background-color: var(--secondary-color);
+    font-family: "blackCat", sans-serif;
+    color: var(--primary-color);
+    font-size: 2rem;
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0px 10px 12px black;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+#choices {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.game-display {
+    flex: 3;
+    background-color: var(--primary-color);
+    margin: 16px;
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-display div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.game-display p {
+    font-size: 4rem;
+    color: var(--accent-color);
+}
+
+.game-display h1 {
+    font-size: 7rem;
+    color: var(--accent-color);
+}
+
+.inner-box {
+    background-color: var(--primary-color);
+    flex: 2;
+    outline: 2px solid;
+}
+
+.inner-box h1 {
+    font-size: 6rem;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+.sidebar > .choice-history {
+    flex: 2;
+    max-height: 300px;
+    overflow-y: hidden;
+}
+
+.history {
+    gap: 1rem;
+    padding: 1rem;
+    scroll-behavior: smooth;
+}
+
+.history p {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+
+

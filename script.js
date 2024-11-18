@@ -1,88 +1,155 @@
-const ROCK = 'rock'
-const PAPER = 'paper'
-const SCISSOR = 'scissor'
+const ROCK = 'rock';
+const PAPER = 'paper';
+const SCISSOR = 'scissor';
 
-let humanScore = 0
-let computerScore = 0
+let currentHScore = 0;
+let currentCScore = 0;
 
+/**
+ * Returns the computer's choice (rock, paper, or scissors) based on a random number.
+ * Adds the choice to the computer's history.
+ */
 function getComputerChoice() {
+    const randNum = Math.floor(Math.random() * 10) + 1;
 
-    let randNum = Math.floor(Math.random() * 10) + 1
     if (randNum < 7 && randNum > 3) {
-        return PAPER
-    }
-    else if (randNum < 4) {
-        return ROCK
-    }
-    else {
-        return SCISSOR
-    }
-}
-
-function getHumanChoice() {
-    let validInput = false;
-    while (!validInput) {
-        let userInput = prompt('What\'s your choice:')
-        if (userInput == 1) {
-            validInput = true
-            return ROCK
-        }
-        else if (userInput == 2) {
-            validInput = true
-            return PAPER
-        }
-        else if (userInput == 3) {
-            validInput = true
-            return SCISSOR
-        }
-        else {
-            console.log('Invalid Input, try again')
-        }
+        addToHistory('-parchment', 0);
+        return PAPER;
+    } else if (randNum < 4) {
+        addToHistory('-stone', 0);
+        return ROCK;
+    } else {
+        addToHistory('-cross blades', 0);
+        return SCISSOR;
     }
 }
 
-function playRound(HC, CC) {
-    if ((HC == ROCK && CC == SCISSOR) || (HC == PAPER && CC == ROCK) || (HC == SCISSOR && CC == PAPER)) {
-        console.log('You win this round!')
-        humanScore++
+/**
+ * Handles a round of the game when a user clicks on a choice.
+ * Updates scores and displays the round result.
+ */
+function playRound(event) {
+    const button = event.target.closest('button');
+
+    if (!button) return;
+
+    const humanScore = document.querySelector('#human-score');
+    const computerScore = document.querySelector('#computer-score');
+    currentHScore = parseInt(humanScore.textContent, 10);
+    currentCScore = parseInt(computerScore.textContent, 10);
+
+    let humanChoice;
+    switch (button.className) {
+        case 'rock':
+            addToHistory('-stone', 1);
+            humanChoice = ROCK;
+            break;
+        case 'paper':
+            addToHistory('-parchment', 1);
+            humanChoice = PAPER;
+            break;
+        case 'scissor':
+            addToHistory('-cross blades', 1);
+            humanChoice = SCISSOR;
+            break;
     }
-    else if ((HC == ROCK && CC == PAPER) || (HC == PAPER && CC == SCISSOR) || (HC == SCISSOR && CC == ROCK)) {
-        console.log('You Lose this round!')
-        computerScore++
-    }
-    else if (HC == CC) {
-        console.log('It\'s a Tied for this round')
+
+    const computerChoice = getComputerChoice();
+
+    displayChoices(humanChoice, computerChoice);
+    choiceCompare(humanChoice, computerChoice);
+
+    humanScore.textContent = currentHScore;
+    computerScore.textContent = currentCScore;
+}
+
+/**
+ * Compares human and computer choices to determine the round outcome.
+ * Updates scores and displays the outcome.
+ */
+function choiceCompare(humanChoice, computerChoice) {
+    if (
+        (humanChoice === ROCK && computerChoice === SCISSOR) ||
+        (humanChoice === PAPER && computerChoice === ROCK) ||
+        (humanChoice === SCISSOR && computerChoice === PAPER)
+    ) {
+        displayOutcome('Victory');
+        currentHScore++;
+    } else if (
+        (humanChoice === ROCK && computerChoice === PAPER) ||
+        (humanChoice === PAPER && computerChoice === SCISSOR) ||
+        (humanChoice === SCISSOR && computerChoice === ROCK)
+    ) {
+        displayOutcome('Defeat');
+        currentCScore++;
+    } else if (humanChoice === computerChoice) {
+        displayOutcome('Draw');
     }
 }
 
-function playGame() {
-    let gameOn = true
-    let counter = 1
+/**
+ * Displays the outcome of the round in the game display section.
+ * Limits the number of outcome messages displayed.
+ */
+function displayOutcome(outcome) {
+    const screen = document.querySelector('.game-display');
+    const result = document.createElement('h1');
+    result.textContent = outcome;
 
-    console.log('Welcome to game of ROCK-PAPER-SCISSOR')
-    console.log('type 1 for rock, 2 for paper and 3 for scissor')
-    while (gameOn) {
-        let humanChoice = getHumanChoice()
-        let computerChoice = getComputerChoice()
-        console.log(`Round ${counter}`)
-        playRound(humanChoice, computerChoice)
-        counter++
-        if (counter > 5) {
-            gameOn = false
-        }
-    }
-    console.log(`Your score: ${humanScore}`)
-    console.log(`Opponent score: ${computerScore}`)
-    if (humanScore == computerScore) {
-        console.log('The game was a tie')
-    }
-    else if (humanScore > computerScore) {
-        console.log('You have WON the game')
-    }
-    else {
-        console.log('You have LOST the game')
+    if (screen.children.length > 2) {
+        screen.lastChild.remove();
     }
 
+    screen.prepend(result);
 }
 
-playGame()
+/**
+ * Displays the choices made by the human and the computer.
+ */
+function displayChoices(humanChoice, computerChoice) {
+    const screen = document.querySelector('.game-display');
+    screen.replaceChildren();
+
+    const HChoiceImage = createChoiceImage(humanChoice);
+    const CChoiceImage = createChoiceImage(computerChoice);
+
+    const verses = document.createElement('p');
+    verses.textContent = 'VS';
+
+    const division = document.createElement('div');
+    division.append(HChoiceImage, verses, CChoiceImage);
+
+    screen.appendChild(division);
+}
+
+/**
+ * Returns an image element corresponding to a game choice.
+ */
+function createChoiceImage(choice) {
+    const image = document.createElement('img');
+    const images = {
+        [ROCK]: 'assets/images/rune_stone.png',
+        [PAPER]: 'assets/images/parchment.png',
+        [SCISSOR]: 'assets/images/sword-new.png',
+    };
+    image.src = images[choice];
+    return image;
+}
+
+/**
+ * Adds a choice to the human or computer's history.
+ * @param {string} elementToAdd - Symbol representing the choice.
+ * @param {number} whereToAdd - 1 for human, 0 for computer.
+ */
+function addToHistory(elementToAdd, whereToAdd) {
+    const container = whereToAdd
+        ? document.querySelector('.human .history')
+        : document.querySelector('.computer .history');
+
+    const symbol = document.createElement('p');
+    symbol.textContent = elementToAdd;
+    container.prepend(symbol);
+}
+
+// Add event listener to game choices
+document.querySelector('#choices').addEventListener('click', playRound);
