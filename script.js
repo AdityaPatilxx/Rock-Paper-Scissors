@@ -138,8 +138,8 @@ function createChoiceImage(choice) {
 
 /**
  * Adds a choice to the human or computer's history.
- * @param {string} elementToAdd - Symbol representing the choice.
- * @param {number} whereToAdd - 1 for human, 0 for computer.
+ * elementToAdd - Symbol representing the choice.
+ * whereToAdd - 1 for human, 0 for computer.
  */
 function addToHistory(elementToAdd, whereToAdd) {
     const container = whereToAdd
