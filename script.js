@@ -51,62 +51,38 @@ function playRound(event) {
         }
     }
 
-    signCompare(humanChoice, computerChoice)
+    choiceCompare(humanChoice, computerChoice)
     humanScore.textContent = currentHScore
     computerScore.textContent = currentCScore
 
 }
 
-function signCompare(HC, CC) {
+function choiceCompare(HC, CC) {
     if ((HC == ROCK && CC == SCISSOR) || (HC == PAPER && CC == ROCK) || (HC == SCISSOR && CC == PAPER)) {
-        console.log('You win this round!')
+        display('Victory')
         currentHScore++
 
     }
     else if ((HC == ROCK && CC == PAPER) || (HC == PAPER && CC == SCISSOR) || (HC == SCISSOR && CC == ROCK)) {
-        console.log('You Lose this round!')
+        display('Defeat')
         currentCScore++
     }
     else if (HC == CC) {
-        console.log('It\'s a Tied for this round')
+        display('Draw')
     }
 }
 
-// function playGame() {
-//     let gameOn = true
-//     let counter = 1
+function display(outcome) {
+    let result = document.createElement('h1')
+    let screen = document.querySelector('.game-display')
+    screen.replaceChildren()
 
-//     console.log('Welcome to game of ROCK-PAPER-SCISSOR')
-//     console.log('type 1 for rock, 2 for paper and 3 for scissor')
-//     while (gameOn) {
-//         let humanChoice = getHumanChoice()
-//         let computerChoice = getComputerChoice()
-//         console.log(`Round ${counter}`)
-//         playRound(humanChoice, computerChoice)
-//         counter++
-//         if (counter > 5) {
-//             gameOn = false
-//         }
-//     }
-//     console.log(`Your score: ${humanScore}`)
-//     console.log(`Opponent score: ${computerScore}`)
-//     if (humanScore == computerScore) {
-//         console.log('The game was a tie')
-//     }
-//     else if (humanScore > computerScore) {
-//         console.log('You have WON the game')
-//     }
-//     else {
-//         console.log('You have LOST the game')
-//     }
+    result.textContent = outcome
 
-// }
-
-// playGame()
-
+    screen.appendChild(result)
+}
 
 let choices = document.querySelector('#choices')
-
 choices.addEventListener('click', playRound)
 
 
