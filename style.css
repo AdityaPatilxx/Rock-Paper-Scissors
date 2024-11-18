@@ -67,7 +67,7 @@ footer p{
 .main-container{
     height: 90vh;
     display: flex;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 20px auto;
     justify-content: center;
 }
@@ -118,7 +118,7 @@ button{
 
 }
 
-.choices{
+#choices{
     display: flex;
     justify-content: space-around;
     flex: 1;
@@ -147,7 +147,7 @@ button{
     flex:2
 }
 
-.live-score{
+.inner-box h1{
     font-size: 6rem;
     text-align: center;
 }
