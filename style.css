@@ -5,6 +5,11 @@
     src: url('assets/fonts/TcblackcatRegular-pgZjd.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'angleR';
+    src: url('assets/fonts/AngelRhapsodyRegular-ZVGJz.ttf') format('truetype');
+}
+
 :root {
     --primary-color: #1B1B2F;
     --secondary-color: #EAEAEA;
